@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Pool
+    network: goerli
+    source:
+      address: "0x1409699a501f7c975a059c78bee44d8ab8d1306e"
+      abi: Pool
+      startBlock: 8555736
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BorrowLog
+        - LendLog
+      abis:
+        - name: Pool
+          file: Pool/abis/Pool.json
+      eventHandlers:
+        - event: BorrowLog(indexed address,uint256,uint256)
+          handler: handleBorrowLog
+        - event: LendLog(indexed address,uint256,uint256)
+          handler: handleLendLog
+      file: Pool/Pool.wasm

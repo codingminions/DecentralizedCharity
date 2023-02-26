@@ -1,0 +1,22 @@
+query CharityQuery {
+  borrowLogs(first: 5) {
+    id
+    borrower
+    amount
+    timestamp
+    category
+    person_age
+    person_gender
+    person_location
+  }
+  lendLogs(first: 5) {
+    id
+    sender
+    amount
+    timestamp
+    person_age
+    person_gender
+    person_location
+    category
+  }
+}
